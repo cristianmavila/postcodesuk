@@ -1,13 +1,12 @@
 import requests
 import json
+import re
 import sys
 
-#http://postcodes.io/
 api_url = 'http://api.postcodes.io/postcodes/'
 
-def main():
-  code = raw_input("Enter code:")
-  if validate_code(code):
+def get_detail_code(code):
+  if validate_code(code) and code != None:
     try:
       response = requests.get(api_url + code)
       response = json.loads(response.text)
